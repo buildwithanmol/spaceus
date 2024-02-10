@@ -2,26 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  background: #111111;
+  color: #fdfdfd;
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.border_around {
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #fdfdfd;
+  color: transparent;
+}
+
+@media screen and (max-width: 640px) {
+  .border_around {
+    -webkit-text-stroke-width: 1px;
   }
 }
+.underline_hover {
+  position: relative;
+  max-width: max-content;
+}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.underline_hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #3f3f46;
+  transition: width 0.3s;
+}
+.underline_hover:hover::after {
+  width: 0%;
 }
